@@ -77,7 +77,7 @@ const publishConfigUpdate = async (req, res) => {
                     value: defaultValue
                 },
                 conditionalValues: conditionalValues || template.parameters[key].conditionalValues,
-                valueType: valueType,
+                valueType: valueType || template.parameters[key].valueType,
                 description: template.parameters[key].description
             };
             await remoteConfig.validateTemplate(template);
@@ -100,7 +100,7 @@ const publishConfigUpdate = async (req, res) => {
                         value: defaultValue
                     },
                     conditionalValues: conditionalValues || template.parameters[key].conditionalValues,
-                    valueType: valueType,
+                    valueType: valueType || template.parameters[key].valueType,
                     description: template.parameters[key].description
                 };
                 await remoteConfig.validateTemplate(template);
@@ -120,18 +120,20 @@ const publishConfigUpdate = async (req, res) => {
         }
         let savedDefaultValue = null;
         let savedConditionalValues = null;
+        let savedValueType = null;
         // Schedule job to update config to new value at startDate & save current value to revert on endDate
         schedule.scheduleJob(parsedStartDate, async () => {
             try {
                 template = await remoteConfig.getTemplate();
                 savedDefaultValue = template.parameters[key].defaultValue.value;
                 savedConditionalValues = template.parameters[key].conditionalValues;
+                savedValueType = template.parameters[key].valueType;
                 template.parameters[key] = {
                     defaultValue: {
                         value: defaultValue
                     },
                     conditionalValues: conditionalValues || savedConditionalValues,
-                    valueType: valueType,
+                    valueType: valueType || savedValueType,
                     description: template.parameters[key].description
                 };
                 await remoteConfig.validateTemplate(template);
@@ -150,7 +152,7 @@ const publishConfigUpdate = async (req, res) => {
                         value: savedDefaultValue
                     },
                     conditionalValues: savedConditionalValues,
-                    valueType: valueType,
+                    valueType: savedValueType,
                     description: template.parameters[key].description
                 };
                 await remoteConfig.validateTemplate(template);
