@@ -26,7 +26,7 @@ A Node.js application to schedule updates for firebase remote config parameters.
        - **URL:** `/add`
        - **Method:** `POST`
        - **Request Body:**
-        ```json
+        ```json5
         {
             "key": "KEY", // MANDATORY
             "defaultValue": "VALUE", // MANDATORY - JSON values also should be converted to string
@@ -47,7 +47,7 @@ A Node.js application to schedule updates for firebase remote config parameters.
           - scheduledDate is passed, the update will be scheduled at that date for publishing. 
           - startDate & endDate is passed the update will be scheduled at the starting date and will be scheduled to be reverted back at the ending date.
         - **Request Body:**
-        ```json
+        ```json5
         {
             "startDate": "2024-07-17T10:30:00+05:30", // NOT MANDATORY - Must be in ISO format
             "endDate": "2024-07-18T10:30:00+05:30", // NOT MANDATORY - Must be in ISO format
