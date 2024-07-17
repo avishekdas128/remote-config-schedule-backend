@@ -45,7 +45,7 @@ A Node.js application to schedule updates for firebase remote config parameters.
         - **Cases:** 
           - None of the startDate, endDate or scheduledDate is passed, the update will be published immediately. 
           - scheduledDate is passed, the update will be scheduled at that date for publishing. 
-          - startDate & endDate is passed the update will be scheduled at the starting date and will be scheduled to be reverted back at the ending date.
+          - startDate & endDate is passed the update will be scheduled at the starting date and will be scheduled to be revert back at the ending date.
         - **Request Body:**
         ```json5
         {
@@ -69,4 +69,9 @@ Contributions are welcome! Please fork the repository and use a feature branch. 
 
 ## ❤ Feedback
 
-For any questions or feedback, please reach out to avishekdas128@gmail.com. Give a ⭐️ if this project helped you!
+For any questions or feedback, please reach out to:
+- Email: avishekdas128@gmail.com
+- Twitter: <a href="https://x.com/avishekdas128">avishekdas128</a>
+- LinkedIn: <a href="https://linkedin.com/in/avishekdas128">avishekdas128</a>
+
+Give a ⭐️ if this project helped you!
